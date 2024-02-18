@@ -21,13 +21,14 @@ const Label = styled("span")<{ variant: Variant }>(({ variant }) => ({
   position: "absolute",
   alignItems: "self-start",
   top: "-6px",
-  left: "124px",
+  left: '40px',
   height: "20px",
   lineHeight: "20px",
   fontSize: "12px",
   fontWeight: "700",
   padding: "0px 4px",
   borderRadius: "6px 6px 6px 2px",
+
   ...getLabelVariant()[variant],
 }));
 

@@ -23,6 +23,7 @@ const StyledButton = styled("button")<{ variant: Variant }>(({ variant }) => ({
   fontWeight: "700",
   padding: "6px 12px",
   borderRadius: "8px",
+
   ...getButtonVariant()[variant],
 }));
 
@@ -37,12 +38,10 @@ const getButtonVariant = () => ({
     },
   },
   contained: {
-    border: "1px solid #919EAB",
     background: "#212B36",
     color: "#FFFFFF",
 
     "&:hover": {
-      border: "1px solid #212B36",
       background: "#454F5B",
     },
   },

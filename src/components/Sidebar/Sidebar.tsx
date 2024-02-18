@@ -1,63 +1,72 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
-import SidebarMenuTitle from "./SidebarMenuTitle";
-import SidebarUserCard from "../SidebarUserCard/SidebarUserCard";
+import SidebarMenuTitle from "./components/SidebarMenuTitle";
+import SidebarUserCard from "./components/SidebarUserCard";
 import { OverviewIcon } from "../Icons/OverviewIcon";
 import { CommerceIcon } from "../Icons/CommerceIcon";
 import { AnalyticsIcon } from "../Icons/AnalyticsIcon";
 import { BankingIcon } from "../Icons/BankingIcon";
 import { BookingIcon } from "../Icons/BookingIcon";
 import { MailIcon } from "../Icons/MailIcon";
-import SidebarMenu from "../SidebarMenu/SidebarMenu";
+import SidebarMenu from "./components/SidebarMenu";
 
-const Sidebar = () => {
-  const menuOverviewItems = Array(
-    {
-      url: "/overview",
-      label: "Overview",
-      icon: <OverviewIcon />,
-    },
-    {
-      url: "/ecommerce",
-      label: "E-commerce",
-      icon: <CommerceIcon />,
-    },
-    {
-      url: "/analytics",
-      label: "Analytics",
-      icon: <AnalyticsIcon />,
-    },
-    {
-      url: "/banking",
-      label: "Banking",
-      icon: <BankingIcon />,
-    },
-    {
-      url: "/booking",
-      label: "Booking",
-      icon: <BookingIcon />,
-    }
-  );
-  const menuManagementItems = Array({
+export interface SidebarItem {
+  url: string;
+  label: string;
+  icon: ReactNode;
+}
+
+const menuOverviewItems: SidebarItem[] = [
+  {
+    url: "/overview",
+    label: "Overview",
+    icon: <OverviewIcon />,
+  },
+  {
+    url: "/ecommerce",
+    label: "E-commerce",
+    icon: <CommerceIcon />,
+  },
+  {
+    url: "/analytics",
+    label: "Analytics",
+    icon: <AnalyticsIcon />,
+  },
+  {
+    url: "/banking",
+    label: "Banking",
+    icon: <BankingIcon />,
+  },
+  {
+    url: "/booking",
+    label: "Booking",
+    icon: <BookingIcon />,
+  },
+];
+
+const menuManagementItems: SidebarItem[] = [
+  {
     url: "/mail",
     label: "Mail",
     icon: <MailIcon />,
-  });
+  },
+];
 
+const Sidebar = () => {
   return (
     <Wrapper>
       <SidebarWrapper>
         <StyledLogo>
-          <Link href='/'>
-            <Image src='./images/logo.svg' alt='Logo' width='40' height='40'></Image>
+          <Link href="/">
+            <Image src="./images/logo.svg" alt="Logo" width="40" height="40"></Image>
           </Link>
         </StyledLogo>
         <MenuWrapper>
-          <SidebarMenuTitle title='Overview' />
+          <SidebarMenuTitle title="Overview" />
           <SidebarMenu menuItems={menuOverviewItems} />
-          <SidebarMenuTitle title='Management' />
+          <SidebarMenuTitle title="Management" />
           <SidebarMenu menuItems={menuManagementItems} />
         </MenuWrapper>
         <SidebarUserCard />

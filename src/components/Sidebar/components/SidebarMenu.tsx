@@ -2,9 +2,10 @@ import React, { FC } from "react";
 
 import Link from "next/link";
 import styled from "styled-components";
+import {SidebarItem} from "@/components/Sidebar/Sidebar";
 
 interface Props {
-  menuItems: [];
+  menuItems: SidebarItem[];
 }
 
 const SidebarMenu: FC<Props> = ({ menuItems }) => {
@@ -13,7 +14,7 @@ const SidebarMenu: FC<Props> = ({ menuItems }) => {
       {menuItems.map(({ url, label, icon }) => (
         <StyledLink key={url} href={url}>
           {icon}
-          <StyledLabel>{label}</StyledLabel>{" "}
+          <StyledLabel>{label}</StyledLabel>
         </StyledLink>
       ))}
     </StyledMenu>
@@ -44,8 +45,7 @@ const StyledLink = styled(Link)({
   },
 });
 
-const StyledLabel = styled("span")({
-  display: "block",
+const StyledLabel = styled("p")({
   padding: "11px 16px",
   fontSize: "14px",
   fontWeight: "600",
