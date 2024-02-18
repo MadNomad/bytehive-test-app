@@ -11,7 +11,7 @@ const SidebarUserCard = () => {
       <ImageWrapper>
         <UserAvatar src="/images/Avatar.1.png" alt="User photo" width="48" height="48" />
         <UserCardBadge variant={Badges.Busy} />
-        <UserCardLabel variant="PRO" />
+        <UserCardLabel variant="Free" />
       </ImageWrapper>
 
       <UserInfo>
@@ -40,7 +40,7 @@ const UserAvatar = styled(Image)({
   borderRadius: "50%",
 });
 
-const UserInfo = styled("p")({
+const UserInfo = styled("div")({
   padding: "12px 0",
   display: "flex",
   flexDirection: "column",

@@ -5,19 +5,21 @@ interface Props {
   number: string;
 }
 
-const NumberBage: FC<Props> = ({ number }) => {
+const NumberBadge: FC<Props> = ({ number }) => {
   return <Badge>{number}</Badge>;
 };
 
 const Badge = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   width: "20px",
   height: "20px",
   backgroundColor: "#FF5630",
   color: "#FFFFFF",
   fontSize: "12px",
   fontWeight: "700",
-  alignItems: "center",
-  borderRadius: "10px",
+  borderRadius: "50%",
 });
 
-export default NumberBage;
+export default NumberBadge;
