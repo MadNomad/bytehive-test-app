@@ -39,7 +39,6 @@ const getBadgeVariant = (variant: Badges): ReactNode => {
       return <OnlineBadge />;
     case Badges.Busy:
       return <BusyBadge />;
-
     case Badges.Away:
       return <AwayBadge />;
     default:
