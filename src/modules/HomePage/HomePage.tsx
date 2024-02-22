@@ -1,10 +1,15 @@
 import React from "react";
-import Head from "next/head";
 import HomePageLayout from "@/layout/HomePageLayout";
 import BookingWidget from "@/components/Widgets/BookingWidget";
 import styled from "styled-components";
+import RoomAvailable from "@/components/Widgets/RoomAvailable";
 
 const HomePage = () => {
+  const toursChartData = [
+    { name: "Sold out", value: 120 },
+    { name: "Available", value: 66 },
+  ];
+
   return (
     <HomePageLayout title="Overview">
       <Wrapper>
@@ -13,7 +18,7 @@ const HomePage = () => {
           <BookingWidget title="Income" value="352,500$" variant="Sold" />
           <BookingWidget title="Canceled" value="20,388" variant="Canceled" />
         </Widgets>
-        <div className="booking__wrapper">
+        <BookingStatWrapper>
           <div className="booking__statistic">
             <div className="statistic__total-incomes">Total Incomes</div>
             <div className="statistic__booked">Booked</div>
@@ -34,8 +39,8 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="tours__statistic">Tours Available</div>
-        </div>
+          <RoomAvailable title="Tours Available" chartData={toursChartData} />
+        </BookingStatWrapper>
       </Wrapper>
     </HomePageLayout>
   );
@@ -43,6 +48,7 @@ const HomePage = () => {
 
 const Wrapper = styled("div")({
   display: "flex",
+  gap: "24px",
   flexDirection: "column",
   padding: "8px 40px 0",
 });
@@ -51,6 +57,11 @@ const Widgets = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   gap: "24px",
+});
+
+const BookingStatWrapper = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
 });
 
 export default HomePage;
