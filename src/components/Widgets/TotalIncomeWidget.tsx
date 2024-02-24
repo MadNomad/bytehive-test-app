@@ -2,21 +2,24 @@ import React, { FC } from "react";
 import { Line, LineChart, ResponsiveContainer } from "recharts";
 import styled from "styled-components";
 import { TrendingUpIcon } from "../Icons/Widgets/TrendingUpIcon";
+import { formatPercentageValue } from "@/lib/formatUtils";
 
 interface LineDataItem {
   pv: number;
 }
 
-interface Props {
-  title: string;
-  data: {
-    percent: number;
-    value: number;
-    graphData: LineDataItem[];
-  };
+interface Data {
+  percent: number;
+  value: number;
+  graphData: LineDataItem[];
 }
 
-const TotalIncomeWidget: FC<Props> = ({ title, data, ...props }) => {
+interface Props {
+  title: string;
+  data: Data;
+}
+
+const TotalIncomeWidget: FC<Props> = ({ title, data }) => {
   return (
     <Wrapper>
       <WidgetHeader>
@@ -25,10 +28,10 @@ const TotalIncomeWidget: FC<Props> = ({ title, data, ...props }) => {
           <TotalValue>${data.value}</TotalValue>
         </LeftColumn>
         <RightColumn>
-          <StyledPercentWrapper>
+          <PercentWrapper>
             <TrendingUpIcon />
-            <PercentValue>{data.percent >= 0 ? `+${data.percent}%` : `-${data.percent}%`}</PercentValue>
-          </StyledPercentWrapper>
+            <PercentValue>{formatPercentageValue(data.percent)}</PercentValue>
+          </PercentWrapper>
           <PercentLabel>than last week</PercentLabel>
         </RightColumn>
       </WidgetHeader>
@@ -66,7 +69,7 @@ const LeftColumn = styled("div")({
 const PercentValue = styled("p")({
   display: "flex",
   width: "22px",
-  fontSize: "14",
+  fontSize: "14px",
   fontWeight: "600",
   alignItems: "flex-end",
 });
@@ -84,7 +87,7 @@ const RightColumn = styled("div")({
   gap: "4px",
 });
 
-const StyledPercentWrapper = styled("div")({
+const PercentWrapper = styled("div")({
   display: "flex",
   gap: "4px",
 });

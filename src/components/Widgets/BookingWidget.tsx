@@ -24,9 +24,9 @@ const BookingWidget: FC<BookingWidgetProps> = ({ variant, title, value, icon, ..
 
 const Widget = styled("div")({
   width: "100%",
-  height: "152px",
   display: "flex",
   padding: "16px",
+  paddingLeft: "24px",
   justifyContent: "space-between",
   alignItems: "center",
   borderRadius: "16px",

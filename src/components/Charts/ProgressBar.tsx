@@ -8,13 +8,13 @@ interface Props {
 
 const ProgressBar: FC<Props> = ({ percent, color, ...props }) => {
   return (
-    <ProgressBarBackground>
+    <Wrapper>
       <ProgressVisual percent={percent} color={color} />
-    </ProgressBarBackground>
+    </Wrapper>
   );
 };
 
-const ProgressBarBackground = styled("div")({
+const Wrapper = styled("div")({
   height: "8px",
   width: "100%",
   borderRadius: "4px",

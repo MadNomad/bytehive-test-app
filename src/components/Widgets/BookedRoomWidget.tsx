@@ -18,7 +18,7 @@ const BookedRoomWidget: FC<Props> = ({ title, data, ...props }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      {data.map((item: Data, index: number) => (
+      {data.map((item, index) => (
         <ItemWrapper key={index}>
           <TextInfoWrapper>
             <ProgressItemName>{item.name}</ProgressItemName>
@@ -54,7 +54,6 @@ const TextInfoWrapper = styled("div")({
 });
 
 const ProgressItemName = styled("p")({
-  display: "block",
   fontSize: "12px",
   fontWeight: "700",
   lineHeight: "1.5",

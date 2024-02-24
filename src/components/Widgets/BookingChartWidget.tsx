@@ -13,7 +13,7 @@ interface Props {
   data: Data;
 }
 
-const BookingChartWidget: FC<Props> = ({ data, ...props }) => {
+const BookingChartWidget: FC<Props> = ({ data }) => {
   return (
     <Wrapper>
       <RadialChart
@@ -30,10 +30,10 @@ const BookingChartWidget: FC<Props> = ({ data, ...props }) => {
           },
         ]}
       />
-      <WrapperInfo>
+      <ChartInfo>
         <Value>{data.value}</Value>
         <Description>{data.name}</Description>
-      </WrapperInfo>
+      </ChartInfo>
     </Wrapper>
   );
 };
@@ -52,7 +52,7 @@ const Wrapper = styled("div")({
   },
 });
 
-const WrapperInfo = styled("div")({
+const ChartInfo = styled("div")({
   display: "flex",
   flexDirection: "column",
 });

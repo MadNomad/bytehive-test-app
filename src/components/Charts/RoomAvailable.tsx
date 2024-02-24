@@ -34,7 +34,7 @@ const RoomAvailable: FC<Props> = ({ title, chartData, ...props }) => {
         </ResponsiveContainer>
         <Label>
           <Name>Tours</Name>
-          <Value>{chartData[1].value}</Value>
+          <Value>{chartData[0].value}</Value>
         </Label>
       </RadialBarWrapper>
     </Wrapper>
@@ -46,7 +46,9 @@ const Wrapper = styled("div")({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: "40px",
   borderRadius: "16px",
   boxShadow: "0px 0px 2px 0px rgba(145, 158, 171, 0.20), 0px 12px 24px -4px rgba(145, 158, 171, 0.12)",
 });
@@ -57,6 +59,7 @@ const Title = styled("p")({
   fontSize: "18px",
   fontWeight: "700",
   lineHeight: "28px",
+  width: "100%",
 });
 
 const RadialBarWrapper = styled("div")({
