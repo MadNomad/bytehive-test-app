@@ -1,3 +1,4 @@
+import { formatToursData } from "@/lib/formatToursData";
 import dynamic from "next/dynamic";
 import React, { FC } from "react";
 import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts";
@@ -28,7 +29,7 @@ const RoomAvailable: FC<Props> = ({ title, chartData, ...props }) => {
             innerRadius="95%"
             outerRadius="95%"
             barSize={20}
-            data={chartData}
+            data={formatToursData(chartData)}
           >
             <RadialBar cornerRadius="50%" dataKey="value" />
           </RadialBarChart>

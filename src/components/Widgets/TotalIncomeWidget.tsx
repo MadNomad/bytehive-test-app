@@ -10,7 +10,7 @@ interface LineDataItem {
 
 interface Data {
   percent: number;
-  value: number;
+  value: string;
   graphData: LineDataItem[];
 }
 

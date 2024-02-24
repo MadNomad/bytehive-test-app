@@ -1,6 +1,6 @@
 export const toursChartData = [
-  { name: "Sold out", value: 100, fill: "#EDEFF1" },
-  { name: "Available", value: 75, fill: "#00A76F" },
+  { name: "Sold out", value: 120, fill: "#00A76F" },
+  { name: "Available", value: 66, fill: "#EDEFF1" },
 ];
 
 export const chartDataSold = {
