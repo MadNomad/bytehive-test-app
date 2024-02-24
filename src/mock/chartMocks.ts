@@ -1,6 +1,6 @@
 export const toursChartData = [
-  { name: "Sold out", value: 120, fill: "#EDEFF1" },
-  { name: "Available", value: 66, fill: "#00A76F" },
+  { name: "Sold out", value: 100, fill: "#EDEFF1" },
+  { name: "Available", value: 75, fill: "#00A76F" },
 ];
 
 export const chartDataSold = {
@@ -40,7 +40,7 @@ export const chartDataBooked = [
 
 export const chartDataTotalIncomes = {
   percent: 8.2,
-  value: 9990,
+  value: "9,990",
   graphData: [
     {
       pv: 0,

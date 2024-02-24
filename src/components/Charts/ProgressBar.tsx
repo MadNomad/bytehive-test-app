@@ -27,4 +27,5 @@ const ProgressVisual = styled("div")<Props>(({ percent, color }) => ({
   borderRadius: "4px",
   backgroundColor: `${color}`,
 }));
+
 export default ProgressBar;

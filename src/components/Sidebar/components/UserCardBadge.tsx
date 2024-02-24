@@ -17,6 +17,19 @@ export interface BadgeProps {
   variant?: Badges;
 }
 
+const getBadgeVariant = (variant: Badges): ReactNode => {
+  switch (variant) {
+    case Badges.Online:
+      return <OnlineBadge />;
+    case Badges.Busy:
+      return <BusyBadge />;
+    case Badges.Away:
+      return <AwayBadge />;
+    default:
+      return <OfflineBadge />;
+  }
+};
+
 const UserCardBadge: FC<BadgeProps> = ({ variant = Badges.Offline, ...props }) => {
   return <Badge {...props}>{getBadgeVariant(variant)}</Badge>;
 };
@@ -32,18 +45,5 @@ const Badge = styled("div")({
     borderRadius: "50%",
   },
 });
-
-const getBadgeVariant = (variant: Badges): ReactNode => {
-  switch (variant) {
-    case Badges.Online:
-      return <OnlineBadge />;
-    case Badges.Busy:
-      return <BusyBadge />;
-    case Badges.Away:
-      return <AwayBadge />;
-    default:
-      return <OfflineBadge />;
-  }
-};
 
 export default UserCardBadge;

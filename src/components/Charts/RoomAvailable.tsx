@@ -6,6 +6,7 @@ import styled from "styled-components";
 export interface RoomAvailableDataItem {
   name: string;
   value: number;
+  fill: string;
 }
 
 interface Props {
@@ -37,6 +38,15 @@ const RoomAvailable: FC<Props> = ({ title, chartData, ...props }) => {
           <Value>{chartData[0].value}</Value>
         </Label>
       </RadialBarWrapper>
+      <Legend>
+        {chartData.map(({ name, value, fill }) => (
+          <LegendItem key={name}>
+            <LegendItemColor color={fill} />
+            <LegendName>{name}</LegendName>
+            <LegendValue>{value} Tours</LegendValue>
+          </LegendItem>
+        ))}
+      </Legend>
     </Wrapper>
   );
 };
@@ -91,6 +101,38 @@ const Value = styled("p")({
   fontSize: "32px",
   fontWeight: "700",
   lineHeight: "48px",
+  color: "#212B36",
+});
+
+const Legend = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  padding: "0 40px 40px",
+  width: "100%",
+  gap: "16px",
+});
+
+const LegendItem = styled("div")({
+  display: "flex",
+  fontSize: "14px",
+  fontWeight: "600",
+  lineHeight: "22px",
+});
+const LegendItemColor = styled("div")<{ color: string }>(({ color }) => ({
+  display: "flex",
+  width: "20px",
+  height: "20px",
+  borderRadius: "6px",
+  backgroundColor: `${color}`,
+}));
+const LegendName = styled("p")({
+  display: "flex",
+  color: "#637381",
+  paddingLeft: "8px",
+});
+const LegendValue = styled("p")({
+  display: "flex",
+  marginLeft: "auto",
   color: "#212B36",
 });
 
