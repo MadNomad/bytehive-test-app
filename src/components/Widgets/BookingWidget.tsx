@@ -1,8 +1,5 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
-import { TotalIcon } from "../Icons/Widgets/TotalIcon";
-import { SoldIcon } from "../Icons/Widgets/SoldIcon";
-import { CanceledIcon } from "../Icons/Widgets/CanceledIcon";
 
 type Variant = "Total" | "Sold" | "Canceled";
 
@@ -10,22 +7,23 @@ export interface BookingWidgetProps {
   variant: Variant;
   title: string;
   value: string;
+  icon: ReactNode;
 }
 
-const BookingWidget: FC<BookingWidgetProps> = ({ variant, title, value, ...props }) => {
+const BookingWidget: FC<BookingWidgetProps> = ({ variant, title, value, icon, ...props }) => {
   return (
     <Widget {...props}>
       <InfoWrapper>
         <WidgetValue>{value}</WidgetValue>
         <WidgetTitle>{title}</WidgetTitle>
       </InfoWrapper>
-      <WidgetIcon>{getIconVariant(variant)}</WidgetIcon>
+      {icon}
     </Widget>
   );
 };
 
 const Widget = styled("div")({
-  width: "344px",
+  width: "100%",
   height: "152px",
   display: "flex",
   padding: "16px",
@@ -54,18 +52,4 @@ const WidgetTitle = styled("p")({
   lineHeight: "22px",
 });
 
-const WidgetIcon = styled("div")({});
-
-const getIconVariant = (variant: Variant): ReactNode => {
-  switch (variant) {
-    case "Total":
-      return <TotalIcon />;
-    case "Sold":
-      return <SoldIcon />;
-    case "Canceled":
-      return <CanceledIcon />;
-    default:
-      return "";
-  }
-};
 export default BookingWidget;

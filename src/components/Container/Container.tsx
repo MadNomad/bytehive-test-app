@@ -12,7 +12,7 @@ const Container: FC<Props> = ({ children }) => {
 
 const Wrapper = styled("div")({
   position: "absolute",
-  width: "1442px",
+  width: "100%",
   maxWidth: "100%",
   margin: "0 auto",
   display: "flex",

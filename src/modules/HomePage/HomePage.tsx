@@ -2,66 +2,129 @@ import React from "react";
 import HomePageLayout from "@/layout/HomePageLayout";
 import BookingWidget from "@/components/Widgets/BookingWidget";
 import styled from "styled-components";
-import RoomAvailable from "@/components/Widgets/RoomAvailable";
+import { TotalIcon } from "@/components/Icons/Widgets/TotalIcon";
+import { SoldIcon } from "@/components/Icons/Widgets/SoldIcon";
+import { CanceledIcon } from "@/components/Icons/Widgets/CanceledIcon";
+import RoomAvailable from "@/components/Charts/RoomAvailable";
+import BookingChartWidget from "@/components/Widgets/BookingChartWidget";
+import BookedRoomWidget from "@/components/Widgets/BookedRoomWidget";
+import TotalIncomeWidget from "@/components/Widgets/TotalIncomeWidget";
+
+const toursChartData = [
+  { name: "Available", value: 66 },
+  { name: "Sold out", value: 120 },
+];
+
+const chartDataSold = {
+  name: "Sold",
+  value: "9,990",
+  percent: 73.9,
+  color: "#22C55E",
+};
+
+const chartDataPending = {
+  name: "Pending for payment",
+  value: "10,989",
+  percent: 45.6,
+  color: "#FFAB00",
+};
+
+const chartDataBooked = [
+  {
+    name: "Pending",
+    value: "56,000",
+    percent: 70,
+    color: "#FFAB00",
+  },
+  {
+    name: "Canceled",
+    value: "50,456",
+    percent: 44,
+    color: "#FF5630",
+  },
+  {
+    name: "SOLD",
+    value: "155,670",
+    percent: 44.15,
+    color: "#22C55E",
+  },
+];
+
+const chartDataTotalIncomes = {
+  percent: 8.2,
+  value: 9990,
+  graphData: [
+    {
+      pv: 0,
+    },
+    {
+      pv: 75,
+    },
+    {
+      pv: 70,
+    },
+    {
+      pv: 100,
+    },
+    {
+      pv: 50,
+    },
+  ],
+};
 
 const HomePage = () => {
-  const toursChartData = [
-    { name: "Sold out", value: 120 },
-    { name: "Available", value: 66 },
-  ];
-
   return (
     <HomePageLayout title="Overview">
-      <Wrapper>
-        <Widgets>
-          <BookingWidget title="Total Booking" value="95,500" variant="Total" />
-          <BookingWidget title="Income" value="352,500$" variant="Sold" />
-          <BookingWidget title="Canceled" value="20,388" variant="Canceled" />
-        </Widgets>
+      <PageWrapper>
+        <WidgetsWrapper>
+          <BookingWidget title="Total Booking" value="95,500" variant="Total" icon={<TotalIcon />} />
+          <BookingWidget title="Income" value="352,500$" variant="Sold" icon={<SoldIcon />} />
+          <BookingWidget title="Canceled" value="20,388" variant="Canceled" icon={<CanceledIcon />} />
+        </WidgetsWrapper>
         <BookingStatWrapper>
-          <div className="booking__statistic">
-            <div className="statistic__total-incomes">Total Incomes</div>
-            <div className="statistic__booked">Booked</div>
-            <div className="booking__charts">
-              <div className="booking__charts-item">
-                <div className="chart__radial"></div>
-                <div className="chart__text">
-                  <div className="chart__number">9,990</div>
-                  <div className="chart__label">Sold</div>
-                </div>
-              </div>
-              <div className="booking__charts-item">
-                <div className="chart__radial"></div>
-                <div className="chart__text">
-                  <div className="chart__number">10,989</div>
-                  <div className="chart__label">Pending for payment</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <RoomAvailable title="Tours Available" chartData={toursChartData} />
+          <TotalIncomeWidget title="Total Incomes" data={chartDataTotalIncomes} />
+          <BookedRoomWidget title="Booked" data={chartDataBooked} />
         </BookingStatWrapper>
-      </Wrapper>
+        <BookingChartsWrapper>
+          <BookingChartWidget data={chartDataSold} />
+          <BookingChartWidget data={chartDataPending} />
+        </BookingChartsWrapper>
+        <RoomAvailable title="Tours Available" chartData={toursChartData} />
+      </PageWrapper>
     </HomePageLayout>
   );
 };
 
-const Wrapper = styled("div")({
-  display: "flex",
-  gap: "24px",
-  flexDirection: "column",
+const PageWrapper = styled("div")({
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateRows: "152px 268px 160px",
+  gridColumnGap: "24px",
+  gridRowGap: "24px",
   padding: "8px 40px 0",
 });
 
-const Widgets = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
+const WidgetsWrapper = styled("div")({
+  gridArea: "1 / 1 / 2 / 4",
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gap: "24px",
+  height: "152px",
 });
 
 const BookingStatWrapper = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
+  gridArea: "2 / 1 / 3 / 3",
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
+  gap: "24px",
+});
+
+const BookingChartsWrapper = styled("div")({
+  gridArea: "3 / 1 / 4 / 3",
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
+  borderRadius: "16px",
+  boxShadow: "0px 0px 2px 0px rgba(145, 158, 171, 0.20), 0px 12px 24px -4px rgba(145, 158, 171, 0.12)",
 });
 
 export default HomePage;
