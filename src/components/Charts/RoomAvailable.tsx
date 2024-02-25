@@ -1,5 +1,4 @@
 import { formatToursData } from "@/lib/formatToursData";
-import dynamic from "next/dynamic";
 import React, { FC } from "react";
 import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts";
 import styled from "styled-components";
@@ -76,8 +75,6 @@ const Title = styled("p")({
 const RadialBarWrapper = styled("div")({
   display: "flex",
   position: "relative",
-  width: "210px",
-  height: "210px",
   justifyContent: "center",
   alignItems: "center",
 });
@@ -119,20 +116,20 @@ const LegendItem = styled("div")({
   fontWeight: "600",
   lineHeight: "22px",
 });
+
 const LegendItemColor = styled("div")<{ color: string }>(({ color }) => ({
-  display: "flex",
   width: "20px",
   height: "20px",
   borderRadius: "6px",
   backgroundColor: `${color}`,
 }));
+
 const LegendName = styled("p")({
-  display: "flex",
   color: "#637381",
   paddingLeft: "8px",
 });
+
 const LegendValue = styled("p")({
-  display: "flex",
   marginLeft: "auto",
   color: "#212B36",
 });
