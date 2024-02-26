@@ -74,6 +74,8 @@ const Title = styled("p")({
 
 const RadialBarWrapper = styled("div")({
   display: "flex",
+  width: "210px",
+  height: "210px",
   position: "relative",
   justifyContent: "center",
   alignItems: "center",
